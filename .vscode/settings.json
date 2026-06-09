@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "git -C \"c:\\Users\\ding_\\Source\\Stub-Gateway\"": true
+    },
+    "files.associations": {
+        "**/specs/*.spec": "cucumber"
+    }
+}

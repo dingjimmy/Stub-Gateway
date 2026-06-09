@@ -2,7 +2,7 @@ Feature: Use the double safely in CI and parallel test runs
 
   Rule: Each test run can target an isolated namespace of configuration when required
 
-    Scenario: Isolated workspace
+    Example: Isolated workspace
       Given workspace "checkout-tests" has stub GET /inventory returning body "in-stock"
       And workspace "payment-tests" has stub GET /inventory returning body "out-of-stock"
       When a client sends GET http://localhost:9090/inventory with header X-Stub-Workspace: checkout-tests
@@ -12,7 +12,7 @@ Feature: Use the double safely in CI and parallel test runs
 
   Rule: The system does not call real third-party hosts for stubbed paths
 
-    Scenario: No outbound dependency for matched stubs
+    Example: No outbound dependency for matched stubs
       Given a stub handles GET /external-api/status
       When a client sends GET http://localhost:9090/external-api/status
       Then the client receives only the configured stub response

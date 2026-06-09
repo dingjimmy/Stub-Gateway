@@ -2,13 +2,13 @@ Feature: Run the stub service for acceptance tests
 
   Rule: The service exposes a reachable HTTP endpoint for tests
 
-    Scenario: Start listening on a chosen port
+    Example: Start listening on a chosen port
       Given no stub service is listening on port 9090
       When the operator starts the stub service on port 9090
       Then HTTP clients can connect to http://localhost:9090
       And requests to configured paths receive configured responses
 
-    Scenario: Report that the service is running
+    Example: Report that the service is running
       Given the stub service is running on port 9090
       When the operator asks for the service status
       Then the status indicates the service is running
@@ -16,7 +16,7 @@ Feature: Run the stub service for acceptance tests
 
   Rule: The service can be stopped cleanly
 
-    Scenario: Stop releases the port
+    Example: Stop releases the port
       Given the stub service is running on port 9090
       When the operator stops the stub service
       Then HTTP clients cannot connect to http://localhost:9090
@@ -24,7 +24,7 @@ Feature: Run the stub service for acceptance tests
 
   Rule: Only one listener may bind to a given port at a time
 
-    Scenario: Second instance on same port is rejected
+    Example: Second instance on same port is rejected
       Given the stub service is already running on port 9090
       When the operator attempts to start another stub service on port 9090
       Then the start attempt fails with a clear error
